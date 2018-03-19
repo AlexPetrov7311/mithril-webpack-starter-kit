@@ -1,8 +1,8 @@
-// index.js
-var m = require("mithril");
+import * as m from 'mithril';
 
 
 class ES6ClassComponent {
+    kind: string;
     constructor(vnode) {
         // vnode.state is undefined at this point
         this.kind = vnode.attrs.name;
