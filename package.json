@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -d --watch --display-error-details",
-    "build": "webpack -p",
-    "start:dev": "npm start & webpack-dev-server  --content-base ./ --hot -d"
+    "build": "webpack -p --env.build=production ",
+    "start:dev": "npm start & webpack-dev-server --open  --content-base ./ --hot -d --env.build=build"
   },
   "keywords": [],
   "author": "",

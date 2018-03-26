@@ -2,10 +2,15 @@ const webpack = require("webpack");
 const TSLintPlugin = require('tslint-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
-module.exports = {
+
+
+module.exports = function (env) {
+  var build = env.build || 'poduction';
+  var staticFolder = 'prodbuild';
+  return {
     entry: [ './src/index.tsx'],
     output: {
-      path: path.resolve(__dirname, 'bin'),
+      path: path.resolve(__dirname, build == 'production' ? staticFolder : 'bin' ),
       filename: 'app.js'
     },
     module: {
@@ -56,3 +61,4 @@ module.exports = {
         port: 8080
       },
   };
+};
