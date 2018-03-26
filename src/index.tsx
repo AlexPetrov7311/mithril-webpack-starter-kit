@@ -1,6 +1,8 @@
-// import { window } from './declare/global';
+import * as global from './declare/global';
 import * as m from 'mithril';
 import { ItemComponent } from './js/itemComponent';
+
+import './scss/item.scss';
 
 /**
  * @class ES6ClassComponent
@@ -18,9 +20,22 @@ class ES6ClassComponent {
         // console.log(`A ${this.kind} component was created`)
     }
 }
+// declare let window: any;
+
+/* tslint:disable */
+
+// declare global {
+//     interface Window { s: any; }
+// }
 // window.s = 213213;
-// console.log(window);
+
+/* tslint:enable */
+
+window.s = 213213;
 
 m.render(document.body, 'hello world');
 
-m.render(document.body, m(ES6ClassComponent, { name: 'Alex Petrov' }));
+m.render(document.body, [
+    <ES6ClassComponent name="Alex Petrov"/>,
+    <ItemComponent />
+]);

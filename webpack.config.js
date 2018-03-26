@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const TSLintPlugin = require('tslint-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
 module.exports = {
     entry: [ './src/index.tsx'],
@@ -10,7 +11,7 @@ module.exports = {
     module: {
         rules: [
             {
-              test: /\.ts|tsx|js$/,
+              test: /\.ts|tsx$/,
               enforce: 'pre',
               loader: 'tslint-loader',
               exclude: /(node_modules|bower_components)/,
@@ -30,14 +31,25 @@ module.exports = {
               test: /\.(js|jsx?)$/,
               loaders: ['babel-loader'],
               exclude: /(node_modules|bower_components)/
-            }
+            },
+            {
+              test: /\.scss$/,
+              use: ExtractTextPlugin.extract({
+                use: [{loader:'css-loader?sourceMap'}, {loader:'sass-loader', options: {
+                  sourceMap: true
+                }}]  
+              })
+              
+            },  
+            {test: /\.(woff|woff2|ttf|eot|svg)$/, loader: 'file-loader?name=./fonts/[hash].[ext]'},
+            {test: /\.(png|jpeg|jpg)$/, loader: 'file-loader?name=./images/[hash].[ext]'}
           ]
     },
-    // plugins: [
-    //   new TSLintPlugin({
-    //     files: ['./src/**/*.ts']
-    //   })
-    // ],
+    plugins: [
+      new ExtractTextPlugin({
+        filename: '[name].min.css',
+      })
+    ],
     devServer: {
         hot: true,
         inline:true,
