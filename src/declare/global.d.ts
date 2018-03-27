@@ -1,16 +1,11 @@
 /* tslint:disable */
-
-// declare type Window = any;
-// export var window: Window;
-
-
+// declare let window: any;
 /* tslint:enable */
-declare global {
-    let asd: Number;
 
-    interface Window { s: any; }
+declare global {
+    interface Window { some: String; }
 }
 
-
+// hack for import file
 declare let _default: {}
 export default _default;
