@@ -14,7 +14,7 @@ class ES6ClassComponent {
         this.kind = vnode.attrs.name;
     }
     public view() {
-        return m('div', `Hello from an ${this.kind}`);
+        return <div> Hello from an {this.kind}</div>;
     }
     public oncreate() {
         // console.log(`A ${this.kind} component was created`)

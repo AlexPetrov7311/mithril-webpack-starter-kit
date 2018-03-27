@@ -5,12 +5,12 @@ const path = require('path');
 
 
 module.exports = function (env) {
-  var build = env.build || 'poduction';
+  var build = env && env.build || 'poduction';
   var staticFolder = 'prodbuild';
   return {
     entry: [ './src/index.tsx'],
     output: {
-      path: path.resolve(__dirname, build == 'production' ? staticFolder : 'bin' ),
+      path: path.resolve(__dirname, (build == 'production' ? staticFolder : 'bin') ),
       filename: 'app.js'
     },
     module: {
