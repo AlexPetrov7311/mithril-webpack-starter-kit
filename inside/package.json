@@ -1,0 +1,19 @@
+{
+  "name": "mithril-webpack-startkit",
+  "version": "1.0.0",
+  "description": "start kit ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "../node_modules/webpack/bin/webpack.js -d --watch --display-error-details --env.staticPath=inside/",
+    "build": "../node_modules/webpack/bin/webpack.js -p --env.build=production",
+    "start:dev": "npm start & ../node_modules/webpack-dev-server/bin/webpack-dev-server.js --open  --content-base ./ --hot -d --env.build=build --config webpack.config.js --env.staticPath=inside/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mithril": "^1.1.6"
+  },
+  "devDependencies": {}
+}

@@ -6,11 +6,12 @@ const path = require('path');
 
 module.exports = function (env) {
   var build = env && env.build || 'poduction';
+  var staticPath = env && env.staticPath || '';
   var staticFolder = 'prodbuild';
   return {
     entry: [ './src/index.tsx'],
     output: {
-      path: path.resolve(__dirname, (build == 'production' ? staticFolder : 'bin') ),
+      path: path.resolve(__dirname, (build == 'production' ? staticPath + staticFolder : staticPath + 'bin') ),
       filename: 'app.js'
     },
     module: {
